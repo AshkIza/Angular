@@ -24,3 +24,10 @@ within the root directory, Dockerfile helps to build your docker image. This Ang
        this will create a container instance from this image (mapping docker port 80 to host port 80)
        
     4- your dockerized angular app should be available from 'localhost:80'
+
+
+## Access the docker image from DockerHub
+You can access the image from https://hub.docker.com/r/ashkan2020/cloudnative/tags?page=1&ordering=last_updated
+  
+    docker pull ashkan2020/cloudnative:ng-course-ui
+    
