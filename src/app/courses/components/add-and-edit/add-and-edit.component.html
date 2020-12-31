@@ -1,0 +1,32 @@
+<div class="container-sm">
+    <br>
+    <div class="jumbotron col-sm-8" style="margin:auto">
+      <form [formGroup]="courseForm">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" formControlName="title">
+        </div>
+        <div class="form-group">
+            <label for="topic">Topic</label>
+            <input type="text" class="form-control" id="topic" formControlName="topic">
+        </div>
+        <div class="form-group">
+            <label for="desc">Description</label>
+            <textarea class="form-control" id="desc" rows="5" formControlName="description"></textarea>
+        </div>
+
+        <button class="btn btn-primary fa fa-save" type="submit" (click)="save()">Save</button>&nbsp;
+        <button class="btn btn-primary fa fa-window-close" type="submit" routerLink="/courses">Cancel</button>
+        
+        <!--<div class="form-group">
+          <label for="exampleFormControlSelect1">Example select</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>1</option>
+            <option>2</option>
+          </select>
+        </div>-->
+
+    </form>
+  </div>
+
+</div>

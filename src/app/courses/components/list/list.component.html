@@ -1,0 +1,39 @@
+<div class="container-sm">
+    <br>
+    <button class="btn btn-primary float-right fa fa-server" routerLink='/courses/add'>Add a course</button>
+    <br><br>
+    <table class="table table-striped">
+        <col style="width:5%">
+        <col style="width:40%">
+	      <col style="width:15%">
+        <col style="width:65%"> 
+        <col style="width:3%"> 
+        <col style="width:3%"> 
+
+        <thead>
+          
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Topic</th>
+            <th scope="col">Description</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of courses; let i = index"> 
+            <th scope="row">{{i}}</th>
+            <td>{{item.title}}</td>
+            <td>{{item.topic}}</td>
+            <td>{{item.description}}</td>
+            <td> <button class="fa fa-eye" title="view" style="color:rgb(0, 140, 255)" (click)="view(item)"></button></td>
+            <td> <button class="delete-label fa fa-trash" style="color:rgb(71, 158, 230)" (click)="delete(item)" title="remove"></button>
+            </td>
+
+          </tr>
+        </tbody>
+    </table>
+</div>
+
