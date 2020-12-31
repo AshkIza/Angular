@@ -7,10 +7,14 @@ import { Course, ICourse } from '../models/course';
 })
 export class CourseService {
   courses:Course[] = [
-    {id:1, title:'Java Core', topic:'Java', description:''},
-    {id:2, title:'JDK 8 Lambdas', topic:'Java', description:''},
-    {id:3, title:'JDK 9 Flows', topic:'Java', description:''},
-    {id:4, title:'Spring Boot', topic:'Spring', description:''},
+    {id:0, title:'	Google Certified Associate Cloud Engineer Certification - Udemy', topic:'GCP', description:'Get hands on with Google Cloud Platform (GCP) and become a Google Certified Associate Cloud Engineer (ACE)'},
+    {id:1, title:'	Grokking the System Design Interview', topic:'Distributed Systems', description:'This course is a complete guide to master the system design interviews. It is created by hiring managers who’ve been working at Google, Facebook, Microsoft, and Amazon.'},
+    {id:2, title:'Spring Boot', topic:'Spring', description:'Spring Core, Spring MVC, Spring initializr, embedded server, '},
+    {id:3, title:'Spring Data', topic:'Spring', description:'Spring Data jpa, Spring Data mongodb, hibernate, CrudRepository'},
+    {id:4, title:'Angular 7 Crash Course', topic:'Angular', description:'Typescript, Webpack, Angular-cli, Dependency Injections, Components, Services, Routers, Reactive Forms,'},
+    {id:5, title:'Java Core', topic:'Java', description:'Collections, Streams, ExecutorService'},
+    {id:6, title:'JDK 8 Lambdas', topic:'Java', description:'Functions, BiFunctions, Operators, Producers, Consumers'},
+    {id:7, title:'JDK 9 Flows', topic:'Java', description:'RxJava, Flow.Publisher, Flow.Subscriber'},
 
   ];
 
