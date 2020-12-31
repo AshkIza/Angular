@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  COPY_RIGHT:string = 'https://github.com/AshkIza/Angular';
 
   constructor() { }
 
