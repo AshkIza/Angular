@@ -1,27 +1,26 @@
 # NgCourseUi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+This project was generated with **Angular 11.0, Bootstrap 4.0 and font-awesome.**
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. 
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Dockerize your Angular Application
 
-## Build
+within the root directory, Dockerfile helps to build your docker image.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    1- ng build --prod  
+       
+       production build (The build artifacts will be stored in the **`dist/`** directory)
+    
+    1- docker build . -t ng-course-ui
+    
+      this will build your docker image as 'ng-course-ui'. you run see this image by running 'docker images'
+      
+    2- docker run -p 80:80 ng-course-ui
+    
+       this will create a container instance from this image (mapping docker port 80 to host port 80)
+       
+    3- your dockerized angular app should be available from 'localhost:80'
