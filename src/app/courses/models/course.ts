@@ -1,19 +1,21 @@
+import { ITopic, Topic } from "./topic";
+
 export interface ICourse {
     id:number | undefined;
     title:string| undefined;
-    topic:string| undefined;
+    topic:ITopic| undefined;
     description:string| undefined;
 }
 
 export class Course implements ICourse {
     id:number | undefined;
     title:string| undefined;
-    topic:string| undefined;
+    topic:Topic| undefined;
     description:string| undefined;
 
     constructor(id?:number,
         title?:string,
-        topic?:string,
+        topic?:Topic,
         description?:string){
             this.id = id;
             this.title = title;

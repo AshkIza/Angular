@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +12,7 @@ import { ViewComponent } from './courses/components/view/view.component';
 import { AddAndEditComponent } from './courses/components/add-and-edit/add-and-edit.component';
 import { ResourceInventoryComponent } from './resources/components/resource-inventory/resource-inventory.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +20,14 @@ import { ResourceInventoryComponent } from './resources/components/resource-inve
     ListComponent,
     ViewComponent,
     AddAndEditComponent,
-    ResourceInventoryComponent
+    ResourceInventoryComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

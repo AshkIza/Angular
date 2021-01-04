@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
 import { Course } from '../../models/course';
 import { CourseService } from '../../services/course.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Topic } from '../../models/topic';
 
 
 @Component({
@@ -34,7 +35,7 @@ export class AddAndEditComponent implements OnInit {
         this.courseservice.getCourseById(this.courseId).subscribe(item=> {
           //console.log('item -->' + item);
           this.courseForm.get('title')?.setValue(item?.title);
-          this.courseForm.get('topic')?.setValue(item?.topic);
+          this.courseForm.get('topic')?.setValue(item?.topic?.name);
           this.courseForm.get('description')?.setValue(item?.description);
         });
       }
@@ -43,16 +44,21 @@ export class AddAndEditComponent implements OnInit {
 
   save():void{
     let course = new Course();
+    let topic = new Topic();
     console.log('course' + this.courseForm.get("title")?.value);
     if(this.editMode){
       course.id = this.courseId;
       this.courseId = -1;
     }
     course.title = this.courseForm.get("title")?.value;
-    course.topic = this.courseForm.get("topic")?.value;
     course.description = this.courseForm.get("description")?.value;
+    topic.name = this.courseForm.get("topic")?.value;
+    course.topic = topic;
     console.log('course' + course.title);
     this.courseservice.addOrUpdateCourse(course);
+    this.courseservice.getAllCourses().subscribe(item => {
+      console.log('refresh after update');
+    });
     this.router.navigateByUrl('courses');
   }
 

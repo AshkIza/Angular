@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Course, ICourse } from '../../models/course';
 import { CourseService } from '../../services/course.service';
+
 
 @Component({
   selector: 'app-list',
@@ -12,18 +13,26 @@ import { CourseService } from '../../services/course.service';
 export class ListComponent implements OnInit {
   courses:ICourse[] | undefined;
 
-  constructor(private courseService:CourseService, private router:Router) { }
+  constructor(private courseService:CourseService, private router:Router, 
+    private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    this.cdr.detectChanges();
    this.courseService.getAllCourses().subscribe(item => {
       this.courses = item;
     })
-    console.log(this.courses);
+    console.log('ngOnInit' + this.courses);
   }
 
   delete(course:Course):void{
+    this.cdr.detectChanges();
     this.courseService.deleteCourse(course);
     console.log("course" + course.title + "deleted!");
+    this.courseService.getAllCourses().subscribe(item => {
+      this.courses = item;
+    });
+    this.cdr.markForCheck();
+    this.cdr.detectChanges();
   }
 
   view(course:Course):void{
