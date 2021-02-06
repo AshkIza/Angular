@@ -1,0 +1,43 @@
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row" *ngIf="user !== undefined">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <span class="font-weight-bold">{{user.firstname}} {{user.lastname}}</span>
+                <span class="text-black-50" *ngIf="user.userCredential !== undefined">{{user.userCredential.emailaddress}} </span>
+                <span *ngIf="user.address !== undefined">{{user.address.state}}</span></div>
+
+                <div class="mt-5 text-right"><button class="btn btn-primary " type="button">Search Courses</button></div>
+                <div class="mt-5 text-right"><button class="btn btn-primary" type="button">Search Books</button></div>
+                <div class="mt-5 text-right"><button class="btn btn-primary" type="button">Edit Profile</button></div>
+
+        </div>
+
+        <div class="col-md-9 border-right" *ngIf="user !== undefined">
+            <div class="p-3 py-5">
+                <h6 >My Books / Study Resourcs</h6>
+                <resource-inventory [user]="user"></resource-inventory>
+                <br>
+
+                <div class="row" >
+                    <div class="col-md-8 border-right">
+
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="text-center">My Courses</h6>
+                        </div>
+                        <course-list [user]="user"></course-list>
+                    </div>
+                    <div class="col-md-4 border-right">
+                        <h6 class="text-center">My to do List</h6>
+                        <app-todo  (mytodo)="clickMessage($event)" [user]="user"></app-todo>
+                       
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="row" *ngIf="user === undefined">
+        No user profile 
+    </div>
+</div>

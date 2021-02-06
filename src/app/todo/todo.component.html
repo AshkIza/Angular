@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<a (click)="add()"><span class="glyphicon glyphicon-plus"></span></a>
+
+
+<div *ngIf="addItem">
+    <div>
+        <span> title  <input type="text" [(ngModel)] = "title" /></span>
+    </div>
+    <div>
+        deadline <span> <input type="text" [(ngModel)] = "deadline" /></span>
+    </div> 
+    <a (click)="save()"><span class="glyphicon glyphicon-floppy-saved"></span></a>
+</div>
+
+   
+        
+
+
+
+   
+<ul>
+    <li *ngFor="let item of list"> title:{{item.title}} |  deadline:{{item.deadline}}</li>
+   
+
+</ul>

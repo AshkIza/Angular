@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
+import { Topic } from 'src/app/topics/models/topic';
+import { User } from 'src/app/users/models/user';
 import { environment } from 'src/environments/environment';
 import { Course, ICourse } from '../models/course';
 
@@ -9,7 +11,8 @@ import { Course, ICourse } from '../models/course';
 })
 export class CourseService {
   
-  /*courses:Course[] = [
+  
+  /*courses:Course[] = 
     {id:1, title:'	Google Certified Associate Cloud Engineer Certification - Udemy', topic:'GCP', description:'Get hands on with Google Cloud Platform (GCP) and become a Google Certified Associate Cloud Engineer (ACE)'},
     {id:2, title:'	Grokking the System Design Interview', topic:'Distributed Systems', description:'This course is a complete guide to master the system design interviews. It is created by hiring managers who’ve been working at Google, Facebook, Microsoft, and Amazon.'},
     {id:3, title:'Spring Boot', topic:'Spring', description:'Spring Core, Spring MVC, Spring initializr, embedded server, '},
@@ -22,49 +25,38 @@ export class CourseService {
 
   generatedId:number=this.courses.length;
   */
-  backendURL:string ='';
   headers:HttpHeaders= new HttpHeaders().set('content-type', 'application/json');
 
 
   constructor(private http: HttpClient) {
-    if(environment.production){
-      this.backendURL = 'http://localhost:8089/';
-    }else{
-      this.backendURL = 'http://localhost:8080/';
-    }
   }
 
-  /*nextId():number{
-    this.generatedId = this.generatedId + 1;
-    return this.generatedId;
-  }*/
+
+  getCoursesFor(user:User):Observable<ICourse[]> {    
+    //.set('Access-Control-Allow-Origin', '*');
+     let topic:Topic = new Topic(15, 'angular parentchild', '@Input @Output');
+     let course:Course = new Course(12, 'Angular Data comunication', topic, '');
+     console.log('getCoursesFor ' + user.firstname);
+    
+    return  from(new Array().concat(course));
+  }
 
   getAllCourses():Observable<ICourse[]> {    
     //.set('Access-Control-Allow-Origin', '*');
-    return this.http.get<ICourse[]>(this.backendURL + 'courses', { 'headers': this.headers });
-    //return of(this.courses);
+    return this.http.get<ICourse[]>(environment.backendURL + 'courses', { 'headers': this.headers });
   }
 
   getCourseById(id:number):Observable<ICourse | undefined> {
     if(id === undefined){
       return of(undefined);
     }
-
-    console.log('getCourseById');
-    let r = this.http.get<ICourse>(this.backendURL + 'courses/' + id , { 'headers': this.headers });
-    return r;
-    //let course = this.courses.find(item => item.id === id);
-    //return of(course);
+    //console.log('getCourseById');
+    return this.http.get<ICourse>(environment.backendURL + 'courses/' + id , { 'headers': this.headers });
   }
 
   addOrUpdateCourse(course:ICourse):void{
-    //this.courses.sort();
-    //console.log('addOrUpdateCourse' + course);
     if(course.id === undefined){//insert
-      //course.id = this.nextId();
-      //this.courses.push(course);
-
-      this.http.post<ICourse>(this.backendURL + 'courses', course).subscribe(
+      this.http.post<ICourse>(environment.backendURL + 'courses', course).subscribe(
         data => {
           console.log('post method' + data);
         }
@@ -73,7 +65,7 @@ export class CourseService {
     }
     //update
     let existingCourse ;
-    this.http.put<ICourse>(this.backendURL + 'courses/' + course.id, course).subscribe(
+    this.http.put<ICourse>(environment.backendURL + 'courses/' + course.id, course).subscribe(
       data => {
         existingCourse = data;
       }
@@ -82,10 +74,8 @@ export class CourseService {
 
   deleteCourse(course:ICourse):void{
     console.log('deleteCourse ');
-    //let index = this.courses.findIndex(item => item.id === course.id);
-    //this.courses.splice(index, 1);
     const headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
-    this.http.delete<ICourse>(this.backendURL + 'courses/' + course.id, {headers: headers}).subscribe(
+    this.http.delete<ICourse>(environment.backendURL + 'courses/' + course.id, {headers: headers}).subscribe(
       data => {
         console.log('deleteCourse ' + data);
       }

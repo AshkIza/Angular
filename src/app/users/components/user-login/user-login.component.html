@@ -1,0 +1,59 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<div class="container-sm col-lg-5">    
+    <div id="loginbox" style="margin-top:50px;" >                    
+        <div class="panel panel-info" >
+            <div class="panel-heading">
+            <div class="panel-title">Sign In</div>
+        </div>     
+
+        <div style="padding-top:30px" class="panel-body" >
+            <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                <form id="loginform" class="form-horizontal" role="form" [formGroup] ="userCredForm">
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email" formControlName="usernameoremail">                                        
+                    </div>
+                                
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password" formControlName="password">
+                    </div>
+
+                    <div [hidden]="hidden()" class="alert-danger">
+                        Passwords do not match
+                     </div>
+                                    
+                    <div class="input-group">
+                        <div class="checkbox">
+                            <label>
+                                <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:10px" class="form-group">
+                        <div class="col-sm-12 controls">
+                             <a id="btn-login" class="btn btn-success" (click) ="login()">Login </a>
+                        </div>
+                    </div>
+s
+                    <div class="form-group">
+                        <div class="col-md-12 control">
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                Don't have an account! 
+                                    <a routerLink='create-account'>
+                                            Sign Up Here
+                                    </a>
+                            </div>
+                        </div>
+                    </div>    
+                </form>  
+
+            </div>                     
+        </div>
+        
+     
+    </div>
+</div>

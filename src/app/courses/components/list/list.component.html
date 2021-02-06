@@ -1,26 +1,26 @@
 <div class="container-sm">
     <br>
 
-
-    <div class="row">
-      <div class="col-sm">
-        <img src="../../../../assets/courses_4.jpg" class="img-fluid float-left" alt="Responsive image">
+    <div *ngIf="showDetails">
+      <div  class="row">
+        <div class="col-sm">
+          <img src="../../../../assets/courses_4.jpg" class="img-fluid float-left" alt="Responsive image">
+        </div>
       </div>
-
-  
-
-    </div>
-
-    <div class="row">
-      <div class="col-sm">
-        <button type="button"class="btn btn-primary float-right fa fa-server" routerLink='/courses/add'>Add a course</button>
-
+      <div class="row">
+        <div class="col-sm">
+          <button type="button"class="btn btn-primary float-right fa fa-server" routerLink='/courses/add'>Add a course</button>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-sm">
+          <button type="button"class="btn btn-primary float-right fa fa-server" routerLink='/topics/add'>Add a topic</button>
+        </div>
       </div>
+      <br><br>
     </div>
     
-    
-    
-    <br><br>
+   
     <table class="table table-striped">
         <col style="width:5%">
         <col style="width:40%">
@@ -35,9 +35,9 @@
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Topic</th>
-            <th scope="col">Description</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th *ngIf="showDetails" scope="col">Description</th>
+            <th *ngIf="showDetails"  scope="col"></th>
+            <th *ngIf="showDetails"  scope="col"></th>
 
           </tr>
         </thead>
@@ -46,9 +46,9 @@
             <th scope="row">{{i+1}}</th>
             <td>{{item.title}}</td>
             <td>{{item.topic?.name}}</td>
-            <td>{{item.description}}</td>
-            <td> <button  type="button" class="fa fa-eye" title="view" style="color:rgb(0, 140, 255)" (click)="view(item)"></button></td>
-            <td> <button type="button" class="delete-label fa fa-trash" style="color:rgb(71, 158, 230)" (click)="delete(item)" title="remove"></button>
+            <td *ngIf="showDetails">{{item.description}}</td>
+            <td *ngIf="showDetails" > <button  type="button" class="fa fa-eye" title="view" style="color:rgb(0, 140, 255)" (click)="view(item)"></button></td>
+            <td *ngIf="showDetails" > <button type="button" class="delete-label fa fa-trash" style="color:rgb(71, 158, 230)" (click)="delete(item)" title="remove"></button>
             </td>
 
           </tr>

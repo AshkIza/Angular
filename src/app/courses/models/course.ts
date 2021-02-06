@@ -1,4 +1,4 @@
-import { ITopic, Topic } from "./topic";
+import { ITopic, Topic } from "src/app/topics/models/topic";
 
 export interface ICourse {
     id:number | undefined;

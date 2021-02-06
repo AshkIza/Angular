@@ -4,7 +4,7 @@ import { Course, ICourse } from '../../models/course';
 import { CourseService } from '../../services/course.service';
 
 @Component({
-  selector: 'app-view',
+  selector: 'courses',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css']
 })

@@ -8,8 +8,27 @@
         </div>
         <div class="form-group">
             <label for="topic">Topic</label>
-            <input type="text" class="form-control" id="topic" formControlName="topic">
+            <!--<input type="text" class="form-control" id="topic" formControlName="topic">-->
+
+           <select id = "topic" class="form-control" formControlName="topic">
+            <option value="{{defaultTopic}}" selected>{{defaultTopic.name}}</option>            
+            
+            <!--<option [defaultSelected]=true [ngValue]="defaultTopic" >defaultTopic</option>
+
+            --<option [ngValue]="" disabled>Choose your topic</option>-->
+            <option *ngFor="let topic of allTopics" [ngValue]="topic">
+             {{ topic.name }}
+            </option>
+          </select> 
+
+
         </div>
+
+
+        
+
+
+
         <div class="form-group">
             <label for="desc">Description</label>
             <textarea class="form-control" id="desc" rows="5" formControlName="description"></textarea>

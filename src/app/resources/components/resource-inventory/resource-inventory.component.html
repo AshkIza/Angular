@@ -1,9 +1,9 @@
 <div class="container-sm">
     <br>
-    <h4> Book Inventory </h4>
+    <h4 *ngIf="showDetails"> Book Inventory </h4>
 
     <form>
-        <div class="form-group form-inline">
+        <div *ngIf="showDetails" class="form-group form-inline">
             search by title: <input class="form-control ml-2" type="text"/> 
             search by topic: <input class="form-control ml-2" type="text"/>
         </div>
@@ -14,7 +14,7 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Title</th>
-          <th scope="col">Topic</th>
+          <th *ngIf="showDetails" scope="col">Topic</th>
           <th scope="col">Authur</th>
           <th scope="col">Link</th>
         </tr>
@@ -24,14 +24,10 @@
           <th scope="row">{{ i + 1 }}</th>
      
           <td>{{ book.title}}</td>
-          <td>{{ book.topic}}</td>
+          <td *ngIf="showDetails">{{ book.topic?.name}}</td>
           <td>{{ book.authur}}</td>
-          <td><a [href]="book.link" target="_blank"> {{ book.link}} </a>    </td>
-
+          <td><a [href]="book.urlLink" target="_blank">  {{book.urlLink}} </a>  </td>
         </tr>
         </tbody>
       </table>
-
-    
-
 </div>

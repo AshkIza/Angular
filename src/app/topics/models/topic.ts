@@ -10,7 +10,6 @@ export class Topic implements ITopic{
     details: string | undefined;
 
     constructor(id?:number,
-        title?:string,
         name?:string,
         details?:string){
             this.id = id;
